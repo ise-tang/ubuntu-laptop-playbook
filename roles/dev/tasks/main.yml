@@ -1,0 +1,17 @@
+#
+# Ubuntu setup for Development
+#
+
+- name: Install Vim
+  sudo: yes
+  apt: name=vim state=present
+
+- name: Install tmux
+  sudo: yes
+  apt: name=tmux state=present
+
+- name: git clone my dotfiles
+  git: repo=git@github.com:issei126/dotfiles.git dest=~/dotfiles accept_hostkey=yes
+
+- name: setup my dotfiles
+  script: ~/dotfiles/setup.sh creates=~/.vimrc
