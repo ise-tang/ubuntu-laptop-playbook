@@ -17,3 +17,6 @@
 - name: copy mozc conf file
   sudo: yes
   copy: src=./roles/utils/files/mozc.xml dest=/usr/share/ibus/component/mozc.xml
+  
+- name: copy mozc keymap file
+  copy: src=./roles/utils/files/config1.db dest=~/.mozc/config1.db
