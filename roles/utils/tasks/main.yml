@@ -2,6 +2,19 @@
 # Ubuntu laptop playbook for utils
 #
 
+- name: check capslock func
+  command: "dconf read /org/gnome/desktop/input-sources/xkb-options"
+  register: cps
+  changed_when: False
+
+- name: enable keyboard plugin
+  command: dconf reset /org/gnome/settings-daemon/plugins/keyboard/active
+  when: cps.stdout != "['ctrl:nocaps']"
+
+- name: capslock works as ctrl
+  command: dconf write /org/gnome/desktop/input-sources/xkb-options "['ctrl:nocaps']"
+  when: cps.stdout != "['ctrl:nocaps']"
+  
 - name: install Emoji font
   apt: name=ttf-ancient-fonts state=present
   sudo: yes
