@@ -1,0 +1,11 @@
+#
+# Ubuntu setup for thinkpad X201
+#
+
+- name: install thinkfan
+  sudo: yes
+  apt: name=thinkfan state=present
+
+- name: put thinkfan conf file
+  sudo: yes
+  copy: src=./roles/thinkpad/files/thinkfan.conf dest=/etc/thinkfan.conf 
