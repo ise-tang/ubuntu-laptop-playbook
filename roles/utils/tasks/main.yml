@@ -1,0 +1,7 @@
+#
+# Ubuntu laptop playbook for utils
+#
+
+- name: install Emoji font
+  apt: name=ttf-ancient-fonts state=present
+  sudo: yes
