@@ -5,3 +5,15 @@
 - name: install Emoji font
   apt: name=ttf-ancient-fonts state=present
   sudo: yes
+
+- name: install ibus-mozc
+  sudo: yes
+  apt: name={{ item }}
+  with_items:
+    - ibus-mozc
+    - mozc-server
+    - mozc-utils-gui
+
+- name: copy mozc conf file
+  sudo: yes
+  copy: src=./roles/utils/files/mozc.xml dest=/usr/share/ibus/component/mozc.xml

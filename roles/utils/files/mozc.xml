@@ -1,0 +1,23 @@
+<component>
+  <version>1.13.1651.102-2</version>
+  <name>com.google.IBus.Mozc</name>
+  <license>New BSD</license>
+  <exec>/usr/lib/ibus-mozc/ibus-engine-mozc --ibus</exec>
+  <textdomain>ibus-mozc</textdomain>
+  <author>Google Inc.</author>
+  <homepage>http://code.google.com/p/mozc/</homepage>
+  <description>Mozc Component</description>
+<engines>
+<engine>
+  <symbol>&#x3042;</symbol>
+  <rank>80</rank>
+  <description>Mozc (Japanese Input Method)</description>
+  <language>ja</language>
+  <icon>/usr/share/ibus-mozc/product_icon.png</icon>
+  <setup>/usr/lib/mozc/mozc_tool --mode=config_dialog</setup>
+  <layout>default</layout>
+  <name>mozc-jp</name>
+  <longname>Mozc</longname>
+</engine>
+</engines>
+</component>

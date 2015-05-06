@@ -9,3 +9,7 @@
 - name: put thinkfan conf file
   sudo: yes
   copy: src=./roles/thinkpad/files/thinkfan.conf dest=/etc/thinkfan.conf 
+
+- name: put thinkfan default conf file
+  sudo: yes
+  copy: src=./roles/thinkpad/files/thinkfan dest=/etc/default/thinkfan
