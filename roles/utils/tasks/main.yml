@@ -37,3 +37,6 @@
 - name: install mikutter
   sudo: yes
   apt: name=mikutter state=present
+
+- name: change the keybind like Emacs
+  command: gsettings set org.gnome.desktop.interface gtk-key-theme Emacs
