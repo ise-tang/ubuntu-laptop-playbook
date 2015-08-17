@@ -43,3 +43,6 @@
 
 - name: change the keybind like Emacs
   command: gsettings set org.gnome.desktop.interface gtk-key-theme Emacs
+
+- name: Switch directory language to English
+  shell: 'LANG=C xdg-user-dirs-gtk-update'
