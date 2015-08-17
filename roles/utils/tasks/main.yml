@@ -34,6 +34,9 @@
 - name: copy mozc keymap file
   copy: src=./roles/utils/files/config1.db dest=~/.mozc/config1.db
 
+- name: inport keymap your self
+  command : ibus-setup
+
 - name: install mikutter
   sudo: yes
   apt: name=mikutter state=present
