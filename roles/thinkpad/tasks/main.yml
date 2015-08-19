@@ -2,6 +2,26 @@
 # Ubuntu setup for thinkpad X201
 #
 
+- name: install lm-sensors
+  sudo: yes
+  apt: name=lm-sensors state=present
+
+- name: detect sensors
+  sudo: yes
+  shell: "yes | sensors-detect"
+
+- name: copy thinkpad_acpi.conf
+  sudo: yes
+  copy: src=./roles/thinkpad/files/thinkpad_acpi.conf dest=/etc/modprobe.d/thinkpad_acpi.conf
+
+##- name: reload module
+#  sudo: yes
+#  command: modprobe -rv thinkpad_acpi
+#
+#- name: reload module2
+#  sudo: yes
+#  command: modprobe -v thinkpad_acpi
+
 - name: install thinkfan
   sudo: yes
   apt: name=thinkfan state=present
@@ -13,3 +33,7 @@
 - name: put thinkfan default conf file
   sudo: yes
   copy: src=./roles/thinkpad/files/thinkfan dest=/etc/default/thinkfan
+
+- name: start as service
+  sudo: yes
+  service: name=thinkfan state=started
