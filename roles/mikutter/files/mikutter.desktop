@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=mikutter
+Exec=/home/issei/mikutter/mikutter.rb
+Icon=/home/issei/mikutter/core/skin/data/icon_alternative.png
+NoDisplay=true

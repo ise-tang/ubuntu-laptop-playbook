@@ -1,0 +1,43 @@
+#
+# mikutter stable tasks
+#
+
+- name: install build-essential
+  sudo: yes
+  apt : name=build-essential
+
+- name: install ruby2.1-dev
+  sudo: yes
+  apt : name=ruby2.1-dev
+
+- name: mikutter source clone
+  git: repo=git://toshia.dip.jp/mikutter.git
+       dest=~/mikutter
+       clone=yes
+       accept_hostkey=true
+
+- name: bundle install
+  shell: cd ~/mikutter && bundle install
+
+- name: check .mikutter/plugin
+  stat: path=~/.mikutter/plugin
+  register: plugin_dir
+
+- name: mkdir .mikutter/plugin
+  file: path=~/.mikutter/plugin state=directory
+  when: plugin_dir.stat.md5 is not defined
+
+- name: install mikutter-nested-quote plugin 
+  git: repo=https://github.com/toshia/mikutter-nested-quote.git
+       dest=~/.mikutter/plugin/nested_quote/
+
+- name: clone mikutter-subparts-image
+  git: repo=https://github.com/moguno/mikutter-subparts-image.git
+       dest=/tmp/mikutter-subparts-image
+
+- name: copy clone mikutter-subparts-image for 3.2 or later
+  copy: src=/tmp/mikutter-subparts-image/for_3.2/sub_parts_image 
+        dest=~/.mikutter/plugin
+
+- name: copy desktop file
+  copy: src=./roles/mikutter/files/mikutter.desktop dest=~/.local/share/applications/mikutter.desktop force=no
