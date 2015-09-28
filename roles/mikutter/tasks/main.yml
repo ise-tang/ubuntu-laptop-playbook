@@ -39,5 +39,15 @@
   copy: src=/tmp/mikutter-subparts-image/for_3.2/sub_parts_image 
         dest=~/.mikutter/plugin
 
+- name: install userutil plugin
+  git: repo=https://github.com/osak/userutil.git
+       dest=~/.mikutter/plugin/userutil
+
+- name: install usercomplete plugin
+  git: repo=https://github.com/osak/usercomplete.git
+       dest=~/.mikutter/plugin/usercomplete
+
 - name: copy desktop file
   copy: src=./roles/mikutter/files/mikutter.desktop dest=~/.local/share/applications/mikutter.desktop force=no
+
+ 
