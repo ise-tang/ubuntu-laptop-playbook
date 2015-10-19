@@ -36,4 +36,4 @@
 
 - name: start as service
   sudo: yes
-  service: name=thinkfan state=started
+  service: name=thinkfan state=started enabled=yes
